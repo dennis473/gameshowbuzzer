@@ -192,6 +192,11 @@ button:disabled {
     }
 }
 
+#button{
+    width:100%;
+    height: auto;
+    margin: auto auto;
+}
 
 #buttonImage{
     width: 100%;
@@ -199,7 +204,7 @@ button:disabled {
     margin:auto auto;
 }
 
-#logoImage,#button{
+#logoImage,#buttonImage{
     width: 40%;
     height: auto;
     margin: auto auto;
