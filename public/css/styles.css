@@ -224,7 +224,8 @@ button:disabled {
 }
 #gameOverDiv{
     visibility: hidden;
-    font-size: 2em;
+    font-size: 1.5em;
     color: blue;
+    margin-left:10%;
 }
 

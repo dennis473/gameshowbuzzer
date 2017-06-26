@@ -126,7 +126,7 @@ nextButton.on("click", function(evt){
     if(currentLogo == logosList.length)
     {
         nextButton.attr("disabled","disabled");
-        
+
 
     }
 });
