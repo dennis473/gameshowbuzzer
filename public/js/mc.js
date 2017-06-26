@@ -6,6 +6,9 @@ var nextButton = $("#nextButton");
 var acceptButton = $("#acceptButton");
 var rejectButton = $("#rejectButton");
 var logoImage = $("#logoImage");
+var applause = $("#applause");
+var boo = $("#boo");
+var zap = $("#zap");
 var logosList = [];
 var userList = [];
 var firstPlayer;
@@ -55,6 +58,7 @@ socket.on("firstPlayerBuzzed",function(player){
         if( userList[i].name === player.name)
         {
             firstPlayer = userList[i];
+            zap.play();
             break;
         }
     }
@@ -76,12 +80,14 @@ socket.on("firstPlayerBuzzed",function(player){
 
 
 acceptButton.on("click",function(evt){
+    applause.play();
     firstPlayer.score += 10;
     firstPlayerListItem.text(firstPlayer.name + ":  " + firstPlayer.score);
     firstPlayerListItem.css("background-color","#888");
 });
 
 rejectButton.on("click",function(evt){
+    boo.play();
     firstPlayer.score -= 10;
     firstPlayerListItem.text(firstPlayer.name + ":  " + firstPlayer.score);
     firstPlayerListItem.css("background-color","#888");
