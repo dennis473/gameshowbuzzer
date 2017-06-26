@@ -5,8 +5,10 @@ var currentLogo = 0;
 var nextButton = $("#nextButton");
 var acceptButton = $("#acceptButton");
 var rejectButton = $("#rejectButton");
+var gameOverDiv = $("#gameOverDiv");
 var logoImage = $("#logoImage");
 var applause = $("#applause")[0];
+var gameover = $("#gameover")[0];
 var boo = $("#boo")[0];
 var zap = $("#zap")[0];
 var logosList = [];
@@ -84,6 +86,15 @@ acceptButton.on("click",function(evt){
     firstPlayer.score += 10;
     firstPlayerListItem.text(firstPlayer.name + ":  " + firstPlayer.score);
     firstPlayerListItem.css("background-color","#888");
+    if(currentLogo == logosList.length)
+    {
+        nextButton.attr("disabled","disabled");
+        rejectButton.attr("disabled","disabled");
+        acceptButton.attr("disabled","disabled");
+        gameOverDiv.css("visibility","visible");
+        gameover.play();
+
+    }
 });
 
 rejectButton.on("click",function(evt){
@@ -91,6 +102,15 @@ rejectButton.on("click",function(evt){
     firstPlayer.score -= 10;
     firstPlayerListItem.text(firstPlayer.name + ":  " + firstPlayer.score);
     firstPlayerListItem.css("background-color","#888");
+    if(currentLogo == logosList.length)
+    {
+        nextButton.attr("disabled","disabled");
+        rejectButton.attr("disabled","disabled");
+        acceptButton.attr("disabled","disabled");
+        gameOverDiv.css("visibility","visible");
+        gameover.play();
+
+    }
 });
 
 
@@ -106,6 +126,8 @@ nextButton.on("click", function(evt){
     if(currentLogo == logosList.length)
     {
         nextButton.attr("disabled","disabled");
+        
+
     }
 });
 

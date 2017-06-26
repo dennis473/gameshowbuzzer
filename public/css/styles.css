@@ -194,15 +194,15 @@ button:disabled {
 
 
 
-button img {
+#buttonImage{
     width: 90%;
     height: 90%;
-
+    margin: auto auto;
 }
 
 #logoImage{
-    width: 60%;
-    height: 60%;
+    width: 40%;
+    height: auto;
     margin: auto auto;
 }
 #acceptButton{
@@ -221,5 +221,10 @@ button img {
     margin-right: 10%;
     width: 15%;
     font-size: 1.5em;
+}
+#gameOverDiv{
+    visibility: hidden;
+    font-size: 2em;
+    color: blue;
 }
 
