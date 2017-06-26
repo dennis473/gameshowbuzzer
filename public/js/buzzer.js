@@ -2,6 +2,7 @@
 var socket =  io();   //initialize connection
 
 var button = $("#button");
+var buttonImage = $("#buttonImage");
 button.fadeTo(0,.5);
 var buttonActive = false;
 
@@ -50,4 +51,16 @@ button.on("click", function(evt){
     }
 
 });
+
+$(window).on("orientationchange", function(evt){
+    if( button.css("width") > button.css("height"))
+    {
+        buttonImage.css("width", button.css("height"));
+    }
+    else {
+        buttonImage.css("height", button.css("width"));
+    }
+});
+
+$(window).orientationchange();
 
