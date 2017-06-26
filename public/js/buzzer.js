@@ -55,10 +55,10 @@ button.on("click", function(evt){
 $(window).on("orientationchange", function(evt){
     if( button.css("width") > button.css("height"))
     {
-        buttonImage.css("width", button.css("height"));
+        button.css("width", button.css("height"));
     }
     else {
-        buttonImage.css("height", button.css("width"));
+        button.css("height", button.css("width"));
     }
 });
 
