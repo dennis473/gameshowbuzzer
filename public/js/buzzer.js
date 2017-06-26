@@ -53,14 +53,15 @@ button.on("click", function(evt){
 });
 
 $(window).on("orientationchange", function(evt){
-    if( button.css("width") > button.css("height"))
+    console.log( button.css("width"))
+    if( button.width() > button.height())
     {
-        button.css("width", button.css("height"));
+        button.width( button.height());
     }
     else {
-        button.css("height", button.css("width"));
+        button.height( button.width());
     }
 });
 
-$(window).orientationchange();
+$( window ).orientationchange();
 
