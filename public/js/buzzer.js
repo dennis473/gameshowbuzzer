@@ -54,12 +54,12 @@ button.on("click", function(evt){
 
 $(window).on("orientationchange", function(evt){
     console.log( button.css("width"))
-    if( button.width() > button.height())
+    if( $(window).width() > $(window).height())
     {
-        button.width( button.height());
+        button.width( $(window).height());
     }
     else {
-        button.height( button.width());
+        button.height($(window).width());
     }
 });
 
