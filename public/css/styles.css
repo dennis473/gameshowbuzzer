@@ -191,9 +191,6 @@ button:disabled {
         margin-right: 0
     }
 }
-body{
-    background-color:black;
-}
 
 #buttonDiv{
     width: 100%;
@@ -205,6 +202,7 @@ body{
     width: 90%;
     height: 90%;
     margin: 5%;
+    font-size: 4em;
 }
 
 .center {
