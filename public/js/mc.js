@@ -17,6 +17,7 @@ var logosList = [];
 var userList = [];
 var firstPlayer;
 var firstPlayerListItem;
+var secondChance = false;
 
 users.css("font-size","1.5em");
 
@@ -109,7 +110,15 @@ rejectButton.on("click",function(evt){
     if(currentLogo == logosList.length)
     {
         nextButton.attr("disabled","disabled");
+        if(secondChance)
+        {
+            //nextButton.attr("disabled","disabled");
+            rejectButton.attr("disabled","disabled");
+            acceptButton.attr("disabled","disabled");
+            gameOverDiv.css("visibility","visible");
+            gameover.play();
 
+        }
 
     }
 });
@@ -118,15 +127,8 @@ secondChanceButton.on("click", function(evt){
     socket.emit("secondChance",firstPlayer,function(data){
         console.log(data);
     });
-    if(currentLogo == logosList.length)
-    {
-        //nextButton.attr("disabled","disabled");
-        rejectButton.attr("disabled","disabled");
-        acceptButton.attr("disabled","disabled");
-        gameOverDiv.css("visibility","visible");
-        gameover.play();
+    secondChance = true;
 
-    }
 });
 
 
@@ -139,6 +141,7 @@ nextButton.on("click", function(evt){
 
     logoImage.attr("src","logos/" + logosList[currentLogo]);
     currentLogo++;
+    secondChance = false;
     if(currentLogo == logosList.length)
     {
         nextButton.attr("disabled","disabled");
