@@ -5,8 +5,10 @@ var currentLogo = 0;
 var nextButton = $("#nextButton");
 var acceptButton = $("#acceptButton");
 var rejectButton = $("#rejectButton");
+var secondChanceButton = $("#secondChanceButton");
 var gameOverDiv = $("#gameOverDiv");
 var logoImage = $("#logoImage");
+var users = $("#users");
 var applause = $("#applause")[0];
 var gameover = $("#gameover")[0];
 var boo = $("#boo")[0];
@@ -15,6 +17,8 @@ var logosList = [];
 var userList = [];
 var firstPlayer;
 var firstPlayerListItem;
+
+users.css("font-size","1.5em");
 
 socket.on("connect", function(){
     //  console.log("Connected to server");
@@ -53,7 +57,7 @@ socket.on("logos",function(logos){
 });
 
 socket.on("firstPlayerBuzzed",function(player){
-    console.log("buzzed: " + player.name + ", " + player.score);
+    console.log("buzzed: " + player.id + ", " +player.name + ", " + player.score);
     firstPlayer = null;
     for(var i=0; i < userList.length; i++)
     {
@@ -111,6 +115,12 @@ rejectButton.on("click",function(evt){
         gameover.play();
 
     }
+});
+
+secondChanceButton.on("click", function(evt){
+    socket.emit("secondChance",firstPlayer,function(data){
+        console.log(data);
+    });
 });
 
 

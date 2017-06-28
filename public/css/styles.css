@@ -236,6 +236,7 @@ button:disabled {
     background-color: red;
     color: white;
     font-size: 1.5em;
+    margin-right: 5%;
 
 }
 #nextButton{
@@ -249,4 +250,11 @@ button:disabled {
     color: blue;
     margin-left:10%;
 }
+#secondChanceButton{
+    font-size: 1.5em;
+}
 
+#users ol{
+    list-style: none;
+    font-size: 3em;
+}

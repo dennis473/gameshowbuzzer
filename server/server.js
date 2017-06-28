@@ -82,10 +82,16 @@ io.on("connection", function(socket){
 
     });
 
+    socket.on("secondChance", (params,callback)=>{
+        buzzersActive = true;
+        var id = params.id;
+        var f = io.sockets.connected[id];
+        f.broadcast.emit("activateButton");
+        io.to(f.id).emit("deactivateButton");
 
+    });
 
-
-
+    
     socket.on("disconnect", ()=>{
         // console.log("User was disconnected");
         var user = users.removeUser(socket.id);
