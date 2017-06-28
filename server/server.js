@@ -91,7 +91,7 @@ io.on("connection", function(socket){
 
     });
 
-    
+
     socket.on("disconnect", ()=>{
         // console.log("User was disconnected");
         var user = users.removeUser(socket.id);

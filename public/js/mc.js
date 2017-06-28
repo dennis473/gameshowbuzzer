@@ -109,10 +109,7 @@ rejectButton.on("click",function(evt){
     if(currentLogo == logosList.length)
     {
         nextButton.attr("disabled","disabled");
-        rejectButton.attr("disabled","disabled");
-        acceptButton.attr("disabled","disabled");
-        gameOverDiv.css("visibility","visible");
-        gameover.play();
+
 
     }
 });
@@ -121,6 +118,15 @@ secondChanceButton.on("click", function(evt){
     socket.emit("secondChance",firstPlayer,function(data){
         console.log(data);
     });
+    if(currentLogo == logosList.length)
+    {
+        //nextButton.attr("disabled","disabled");
+        rejectButton.attr("disabled","disabled");
+        acceptButton.attr("disabled","disabled");
+        gameOverDiv.css("visibility","visible");
+        gameover.play();
+
+    }
 });
 
 
