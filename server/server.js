@@ -7,7 +7,7 @@ const socketIO = require("socket.io");
 const fs = require("fs");
 const os = require("os");
 var bodyParser = require("body-parser");
-//const {generateMessage,generateLocationMessage} = require("./utils/message.js");
+
 const {isRealString} = require("./utils/validation.js");
 const {Users} = require("./utils/users.js");
 
@@ -15,7 +15,6 @@ const publicPath = path.join(__dirname,"../public");
 const port = process.env.PORT || 3000;
 
 var app = express();
-app.set('view engine', 'ejs');
 
 var server = http.createServer( app );
 var io = socketIO(server);
@@ -35,15 +34,43 @@ app.use(bodyParser.json());
 /*********Routes*********************************/
 
 app.get("/", function(request,response){
-    response.render("./../views/index.ejs");
+
+    fs.readFile(publicPath +"/index.html",function (err, data){
+        if(err)
+        {
+            response.send("can't find index.html???");
+            return;
+        }
+        response.writeHead(200, {'Content-Type': 'text/html','Content-Length':data.length});
+        response.write(data);
+        response.end();
+    });
 });
 
 app.get("/buzzer", function(request,response){
-    response.render("./../views/buzzer.ejs");
+    fs.readFile(publicPath +"/buzzer.html",function (err, data){
+        if(err)
+        {
+            response.send("can't find buzzer.html???");
+            return;
+        }
+        response.writeHead(200, {'Content-Type': 'text/html','Content-Length':data.length});
+        response.write(data);
+        response.end();
+    });
 });
 
 app.get("/login",function(request,response){
-    response.render("./../views/login.ejs");
+    fs.readFile(publicPath +"/login.html",function (err, data){
+        if(err)
+        {
+            response.send("can't find login.html???");
+            return;
+        }
+        response.writeHead(200, {'Content-Type': 'text/html','Content-Length':data.length});
+        response.write(data);
+        response.end();
+    });
 });
 
 app.post("/mc", function(request,response){
@@ -54,7 +81,17 @@ app.post("/mc", function(request,response){
     if( (u === process.env.ADMIN1 && p===process.env.PASS) ||
         ( u=== process.env.ADMIN2 && p === process.env.PASS))
     {
-        response.render("./../views/mc.ejs");
+        fs.readFile(publicPath +"/mc.html",function (err, data){
+            if(err)
+            {
+                response.send("can't find mc.html???");
+                return;
+            }
+            response.writeHead(200, {'Content-Type': 'text/html','Content-Length':data.length});
+            response.write(data);
+            response.end();
+        });
+
     }
     else {
         response.send("Invalid username and/or password");
