@@ -3,7 +3,13 @@ const http = require("http");
 const express = require("express");
 const socketIO = require("socket.io");
 const fs = require("fs");
-
+const os = require("os");
+//const _ = require("lodash");
+var bodyParser = require("body-parser");
+/*
+var bcrypt = require("bcryptjs");
+var salt = bcrypt.genSaltSync(10);
+*/
 const {generateMessage,generateLocationMessage} = require("./utils/message.js");
 const {isRealString} = require("./utils/validation.js");
 const {Users} = require("./utils/users.js");
@@ -12,6 +18,8 @@ const publicPath = path.join(__dirname,"../public");
 const port = process.env.PORT || 3000;
 
 var app = express();
+app.set('view engine', 'ejs');
+
 var server = http.createServer( app );
 var io = socketIO(server);
 
@@ -21,21 +29,45 @@ var buzzersActive = false;
 const logoDirectory = "./public/logos/";
 var logos;
 
-fs.readdir(logoDirectory, (error,files)=>{
-    if(error)
+app.use(express.static(publicPath));
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
+
+app.get("/", function(request,response){
+    response.render("./../views/index.ejs");
+});
+/*app.get("/mc", function(request,response){
+    response.render("./../views/mc.ejs");
+}); */
+app.get("/buzzer", function(request,response){
+    response.render("./../views/buzzer.ejs");
+});
+/*
+app.get("/test",function(request,response){
+    response.send( bcrypt.hashSync('dennisiscool', 8));
+});
+*/
+app.get("/login",function(request,response){
+    response.render("./../views/login.ejs");
+});
+
+app.post("/mc", function(request,response){
+    var requestedUser=  request.body.mc;
+    var u = requestedUser.username;
+    var p = requestedUser.password;
+    console.log("Password: " + process.env.PASS);
+    if( (u === process.env.ADMIN1 && p===process.env.PASS) ||
+        ( u=== process.env.ADMIN2 && p === process.env.PASS))
     {
-        logos = [];
-        console.log("Error reading logos");
+        response.render("./../views/mc.ejs");
     }
     else {
-        logos = files;
-        console.log("logos: " + logos[1]);
-
+        response.send("Invalid username and/or password");
     }
 
 });
-
-app.use(express.static(publicPath));
 
 io.on("connection", function(socket){
     console.log("New User connected");
@@ -56,7 +88,20 @@ io.on("connection", function(socket){
         }
         else {
             console.log("mc has connected");
-            io.to("mc").emit("logos",logos);
+            var dir = logoDirectory+"logo1/";
+            console.log("directory: " + dir);
+            fs.readdir(dir, (error,files)=>{
+                if(error)
+                {
+                    logos = [];
+                    console.log("Error reading logos");
+                }
+                else {
+                    logos = files;
+                    console.log("logos: " + logos[1]);
+                    io.to("mc").emit("logos",{type:"logo",directory:"logos/logo1/", questions: logos});
+                }
+            });
         }
 
 
@@ -91,6 +136,46 @@ io.on("connection", function(socket){
 
     });
 
+    socket.on("requestFiles",(params,callback)=>{
+        console.log("Params: " + params.type + ", " + params.folder);
+        if(params.type === "logo")
+        {
+
+            var dir = logoDirectory+ params.folder + "/";
+            console.log("directory: " + dir);
+            fs.readdir(dir, (error,files)=>{
+                if(error)
+                {
+                    logos = [];
+                    console.log("Error reading logos");
+                }
+                else {
+                    logos = files;
+                    console.log("logos: " + logos[1]);
+                    io.to("mc").emit("logos",{type:"logo",directory:"logos/" + params.folder + "/",
+                                                                            questions: logos});
+                }
+            });
+        }
+        else if( params.type === "question")
+        {
+            var dir = logoDirectory;
+            fs.readFile(dir + params.folder + ".txt","utf8" ,(error,file)=>{
+                if(error)
+                {
+                    throw error;
+                }
+                console.log(file);
+                var questions = file.split(os.EOL);
+                console.log(questions);
+                io.to("mc").emit("logos",{type:"question",directory:"logos/" ,
+                    questions: questions});
+
+            });
+        }
+
+    });
+
 
     socket.on("disconnect", ()=>{
         // console.log("User was disconnected");
@@ -106,5 +191,5 @@ io.on("connection", function(socket){
 
 
 server.listen(port, () =>{
-    console.log("Server is up on port " + port);
+    console.log("Server is up on port : " + port);
 });

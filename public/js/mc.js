@@ -8,7 +8,10 @@ var rejectButton = $("#rejectButton");
 var secondChanceButton = $("#secondChanceButton");
 var gameOverDiv = $("#gameOverDiv");
 var logoImage = $("#logoImage");
+var questionDiv = $("#questionDiv");
 var users = $("#users");
+var quizSelect = $("#quizSelect");
+var loadButton = $("#loadButton");
 var applause = $("#applause")[0];
 var gameover = $("#gameover")[0];
 var boo = $("#boo")[0];
@@ -18,8 +21,8 @@ var userList = [];
 var firstPlayer;
 var firstPlayerListItem;
 var secondChance = false;
-
-users.css("font-size","1.5em");
+var fileType = "logo";
+var cachedImages = [];
 
 socket.on("connect", function(){
     //  console.log("Connected to server");
@@ -45,7 +48,6 @@ socket.on("updateUserList", function(users){
     userList = users;
     console.log(userList);
     var ol = $("<ol></ol>");
-    ol.id = "userList";
     users.forEach( function(user){
         ol.append($("<li></li>").text(user.name));
     });
@@ -53,8 +55,26 @@ socket.on("updateUserList", function(users){
 });
 
 socket.on("logos",function(logos){
-    console.log(logos);
+    console.log("Logos:",logos);
     logosList = logos;
+    if( logos.type === "logo")
+    {
+        questionDiv.css({display: "none"});
+        logoImage.css({display: "inline-block"});
+        for(var i=0; i < logos.questions.length;i++)
+        {
+            var path = logos.directory;
+            console.log("path: " + path);
+            var img = new Image();
+            img.src = path + logos.questions[i];
+            cachedImages.push(img);
+        }
+    }
+    else if(logos.type === "question")
+    {
+        questionDiv.css({display: "inline-block"});
+        logoImage.css({display: "none"});
+    }
 });
 
 socket.on("firstPlayerBuzzed",function(player){
@@ -85,13 +105,27 @@ socket.on("firstPlayerBuzzed",function(player){
 
 });
 
+loadButton.on("click",function(evt){
+    var s = quizSelect.val();
+    console.log("Selected value: ", s);
+    fileType="logo";
+    if( s.startsWith("q"))
+    {
+        fileType = "question";
+    }
+    socket.emit("requestFiles",{type:fileType,folder:s},function(data){
+        console.log(data);
+    });
+});
+
+
 
 acceptButton.on("click",function(evt){
     applause.play();
     firstPlayer.score += 10;
     firstPlayerListItem.text(firstPlayer.name + ":  " + firstPlayer.score);
     firstPlayerListItem.css("background-color","#888");
-    if(currentLogo == logosList.length)
+    if(currentLogo == logosList.questions.length)
     {
         nextButton.attr("disabled","disabled");
         rejectButton.attr("disabled","disabled");
@@ -107,7 +141,7 @@ rejectButton.on("click",function(evt){
     firstPlayer.score -= 10;
     firstPlayerListItem.text(firstPlayer.name + ":  " + firstPlayer.score);
     firstPlayerListItem.css("background-color","#888");
-    if(currentLogo == logosList.length)
+    if(currentLogo == logosList.questions.length)
     {
         nextButton.attr("disabled","disabled");
         if(secondChance)
@@ -131,18 +165,24 @@ secondChanceButton.on("click", function(evt){
 
 });
 
-
 nextButton.on("click", function(evt){
     socket.emit("nextLogo",{
         text: "next logo"
     },function(data){
         console.log(data);
     });
+    if(logosList.type === "logo")
+    {
+        logoImage.attr("src",logosList.directory + logosList.questions[currentLogo]);
+    }
+    else if(logosList.type === "question")
+    {
+        questionDiv.html(logosList.questions[currentLogo]);
+    }
 
-    logoImage.attr("src","logos/" + logosList[currentLogo]);
     currentLogo++;
     secondChance = false;
-    if(currentLogo == logosList.length)
+    if(currentLogo == logosList.questions.length)
     {
         nextButton.attr("disabled","disabled");
 
