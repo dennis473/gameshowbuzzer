@@ -1,16 +1,13 @@
+
+/**********Add packages***********/
 const path = require("path");
 const http = require("http");
 const express = require("express");
 const socketIO = require("socket.io");
 const fs = require("fs");
 const os = require("os");
-//const _ = require("lodash");
 var bodyParser = require("body-parser");
-/*
-var bcrypt = require("bcryptjs");
-var salt = bcrypt.genSaltSync(10);
-*/
-const {generateMessage,generateLocationMessage} = require("./utils/message.js");
+//const {generateMessage,generateLocationMessage} = require("./utils/message.js");
 const {isRealString} = require("./utils/validation.js");
 const {Users} = require("./utils/users.js");
 
@@ -35,20 +32,15 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
+/*********Routes*********************************/
 app.get("/", function(request,response){
     response.render("./../views/index.ejs");
 });
-/*app.get("/mc", function(request,response){
-    response.render("./../views/mc.ejs");
-}); */
+
 app.get("/buzzer", function(request,response){
     response.render("./../views/buzzer.ejs");
 });
-/*
-app.get("/test",function(request,response){
-    response.send( bcrypt.hashSync('dennisiscool', 8));
-});
-*/
+
 app.get("/login",function(request,response){
     response.render("./../views/login.ejs");
 });
@@ -68,6 +60,8 @@ app.post("/mc", function(request,response){
     }
 
 });
+
+/********Event Handling*********************/
 
 io.on("connection", function(socket){
     console.log("New User connected");
@@ -189,7 +183,7 @@ io.on("connection", function(socket){
 
 });
 
-
+/************Start Server***************************/
 server.listen(port, () =>{
     console.log("Server is up on port : " + port);
 });

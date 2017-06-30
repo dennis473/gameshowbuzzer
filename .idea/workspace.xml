@@ -2,35 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f63e2512-5984-4fbe-8c41-63caee1b559e" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/buzzer.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/css/styles.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/logos/cougar.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/logos/dog.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/logos/elephant.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/logos/hippo.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/logos/lion.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/logos/monkey.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/logos/panther.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/logos/penguin.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/logos/pigs.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/logos/seal.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/logos/small_cougar.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/logos/small_elephant.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/logos/small_lion.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/logos/small_monkey.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/logos/small_panther.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/logos/small_penguin.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/logos/small_pigs.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/logos/small_seal.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/logos/small_tiger.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/logos/tiger.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/logos/tiger2.png" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/views/index.ejs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/mc.html" afterPath="$PROJECT_DIR$/views/mc.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/mc.js" afterPath="$PROJECT_DIR$/public/js/mc.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/server.js" afterPath="$PROJECT_DIR$/server/server.js" />
     </list>
     <ignored path="gameshowbuzzer.iws" />
@@ -52,11 +23,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="server.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="server.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="168" column="49" selection-start-line="168" selection-start-column="49" selection-end-line="168" selection-end-column="49" />
+            <state relative-caret-position="-2442">
+              <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="message.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/utils/message.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -102,7 +83,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="styles.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="styles.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/css/styles.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="227">
@@ -132,10 +113,10 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/views/login.ejs" />
         <option value="$PROJECT_DIR$/public/logos/quiz4.txt" />
-        <option value="$PROJECT_DIR$/server/server.js" />
         <option value="$PROJECT_DIR$/public/js/mc.js" />
         <option value="$PROJECT_DIR$/views/mc.ejs" />
         <option value="$PROJECT_DIR$/public/css/styles.css" />
+        <option value="$PROJECT_DIR$/server/server.js" />
       </list>
     </option>
   </component>
@@ -358,12 +339,12 @@
       <workItem from="1498586685876" duration="5868000" />
       <workItem from="1498653967123" duration="2164000" />
       <workItem from="1498744452049" duration="21399000" />
-      <workItem from="1498830621519" duration="14197000" />
+      <workItem from="1498830621519" duration="15324000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43628000" />
+    <option name="totallyTimeSpent" value="44755000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -554,14 +535,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/utils/users.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/user.js" />
     <entry file="file://$PROJECT_DIR$/models/people.js" />
     <entry file="file://$PROJECT_DIR$/package.json">
@@ -619,14 +592,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="168" column="49" selection-start-line="168" selection-start-column="49" selection-end-line="168" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/index.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
@@ -663,6 +628,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="227">
           <caret line="119" column="21" selection-start-line="119" selection-start-column="21" selection-end-line="119" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/utils/message.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/utils/users.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2442">
+          <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
           <folding />
         </state>
       </provider>
