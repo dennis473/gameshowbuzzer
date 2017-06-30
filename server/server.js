@@ -33,6 +33,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 /*********Routes*********************************/
+
 app.get("/", function(request,response){
     response.render("./../views/index.ejs");
 });
