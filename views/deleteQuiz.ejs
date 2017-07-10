@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Quiz: Buzzer App</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <link href="css/adminstyles.css" type="text/css" rel="stylesheet"/>
+
+</head>
+<body >
+<%- include partials/links.ejs %>
+<div >
+    <%- include partials/existing.ejs %>
+
+    <form  action="/deleteQuiz" method="post">
+        <h3>Delete Selected Quiz</h3>
+        <label>Folder<select id="folderSelect" name="folderSelect">
+                <% for(var i=0; i < quizzes.length; i++){%>
+                <option value="<%=quizzes[i]%>"><%=quizzes[i]%></option>
+                <%}%>
+            </select></label>
+        <input type="submit" value="Delete Quiz" name="submit">
+
+    </form>
+    <% if( typeof message !== "undefined") {%>
+    <p class="success"><%=message%></p>
+    <% }%>
+
+</div>
+
+</body>
+</html>

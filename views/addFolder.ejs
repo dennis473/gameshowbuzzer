@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Folder: Buzzer App</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <link href="css/adminstyles.css" type="text/css" rel="stylesheet"/>
+
+</head>
+<body >
+<%- include partials/links.ejs %>
+<div >
+    <%- include partials/existing.ejs %>
+
+    <form action="/addfolder" method="post">
+        <h3>Create a new Folder</h3>
+
+            <label>Folder Name: <input type="text" name="folderText" id="folderText" /></label>
+            <input type="submit" name="submitButton" />
+
+
+    </form>
+    <p class="success"><% if ( typeof message !== "undefined" ) { %>
+        <%=message%>
+        <%}%>
+    </p>
+
+</div>
+
+</body>
+</html>

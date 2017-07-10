@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Quiz: Buzzer App</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <link href="css/adminstyles.css" type="text/css" rel="stylesheet"/>
+
+</head>
+<body >
+<%- include partials/links.ejs %>
+<div >
+    <%- include partials/existing.ejs %>
+
+    <form  action="/viewQuiz" method="post">
+        <h3>View a Selected Quiz</h3>
+        <label>Folder<select id="quizSelect" name="quizSelect">
+                <% for(var i=0; i < quizzes.length; i++){%>
+                <option value="<%=quizzes[i]%>"><%=quizzes[i]%></option>
+                <%}%>
+            </select></label>
+        <input type="submit" value="View Quiz" name="submit">
+
+    </form>
+    <% if( typeof questions !== "undefined") {%>
+    <% for(var i=0; i < questions.length; i++) {%>
+    <p><%= (i + 1) + ":  " +questions[i]%></p>
+    <%}%>
+    <% }%>
+
+</div>
+
+</body>
+</html>

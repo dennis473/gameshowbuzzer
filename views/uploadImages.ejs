@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Images| Buzzer App</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <link href="css/adminstyles.css" type="text/css" rel="stylesheet"/>
+
+</head>
+<body >
+<%- include partials/links.ejs %>
+<div >
+    <%- include partials/existing.ejs %>
+
+    <form enctype="multipart/form-data" action="/uploadImages" method="post">
+        <h3>Upload Images Into Selected Folder</h3>
+        <label>Folder <select id="folderSelect" name="folderSelect">
+                <% for(var i=0; i < folders.length; i++){%>
+                <option value="<%=folders[i]%>"><%=folders[i]%></option>
+                <%}%>
+            </select></label>
+        <input type="file" name="userPhoto" multiple />
+        <br />
+        <input type="submit" value="Upload Images" name="submit">
+
+    </form>
+    <p class="success"><% if ( typeof message !== "undefined" ) { %>
+        <%=message%>
+        <%}%>
+    </p>
+
+</div>
+
+</body>
+</html>

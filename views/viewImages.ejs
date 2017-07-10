@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Images: Buzzer App</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <link href="css/adminstyles.css" type="text/css" rel="stylesheet"/>
+
+</head>
+<body >
+<%- include partials/links.ejs %>
+<div >
+    <%- include partials/existing.ejs %>
+
+    <form  action="/viewImages" method="post">
+        <h3>View Images in Selected Folder</h3>
+        <label>Folder<select id="folderSelect" name="folderSelect">
+                <% for(var i=0; i < folders.length; i++){%>
+                <option value="<%=folders[i]%>"><%=folders[i]%></option>
+                <%}%>
+            </select></label>
+        <input type="submit" value="View Images" name="submit">
+
+    </form>
+    <% if( typeof images !== "undefined") {%>
+        <% for(var i=0; i < images.length; i++) {%>
+            <img src="logos/<%= imagePath +"/" + images[i]%>" />
+        <%}%>
+    <% }%>
+
+</div>
+
+</body>
+</html>

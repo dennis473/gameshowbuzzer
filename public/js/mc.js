@@ -32,7 +32,7 @@ socket.on("connect", function(){
         if(error)
         {
             alert(error);
-           // window.location.href = "/mc.html";
+           // window.location.href = "/mc.ejs";
         }
         else {
             console.log("Successfully joined gameshow");
@@ -70,7 +70,7 @@ socket.on("logos",function(logos){
             cachedImages.push(img);
         }
     }
-    else if(logos.type === "question")
+    else if(logos.type === "quiz")
     {
         questionDiv.css({display: "inline-block"});
         logoImage.css({display: "none"});
@@ -109,9 +109,9 @@ loadButton.on("click",function(evt){
     var s = quizSelect.val();
     console.log("Selected value: ", s);
     fileType="logo";
-    if( s.startsWith("q"))
+    if( s.startsWith("quiz"))
     {
-        fileType = "question";
+        fileType = "quiz";
     }
     socket.emit("requestFiles",{type:fileType,folder:s},function(data){
         console.log(data);
@@ -171,11 +171,12 @@ nextButton.on("click", function(evt){
     },function(data){
         console.log(data);
     });
+    console.log(logosList);
     if(logosList.type === "logo")
     {
         logoImage.attr("src",logosList.directory + logosList.questions[currentLogo]);
     }
-    else if(logosList.type === "question")
+    else if(logosList.type === "quiz")
     {
         questionDiv.html(logosList.questions[currentLogo]);
     }

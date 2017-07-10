@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Quizzes| Buzzer App</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <link href="css/adminstyles.css" type="text/css" rel="stylesheet"/>
+
+</head>
+<body >
+<%- include partials/links.ejs %>
+<div >
+    <%- include partials/existing.ejs %>
+
+    <form enctype="multipart/form-data" action="/uploadQuizzes" method="post">
+        <h3>Upload Quizzes</h3>
+        Choose Quiz Files: <input type="file" name="quiz" multiple />
+        <br />
+        <input type="submit" value="Upload Quizzes" name="submit">
+
+    </form>
+    <p class="success"><% if ( typeof message !== "undefined" ) { %>
+        <%=message%>
+        <%}%>
+    </p>
+
+</div>
+
+</body>
+</html>
