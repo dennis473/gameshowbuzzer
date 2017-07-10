@@ -135,7 +135,7 @@ app.post("/uploadImages", function (request, response) {
 
         if(err) {
             console.log("Error: ",err);
-            return response.end("Error uploading file.");
+            return response.end("Error uploading file. ",error);
         }
         var temp = request.files;
         for(var i=0; i < temp.length; i++)
