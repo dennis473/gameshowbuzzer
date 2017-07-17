@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
-    "node": "6.10.3"
+    "node": "6.11.1"
   },
   "author": "Dennis Gibson",
   "license": "ISC",
